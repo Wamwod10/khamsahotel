@@ -33,7 +33,6 @@
     "serve": "vite preview",
     "dev": "vite --port 5173",
     "buildCommand": "npm run build"
-    // "outputDirectory": "dist"
   },
   "eslintConfig": {
     "extends": [
