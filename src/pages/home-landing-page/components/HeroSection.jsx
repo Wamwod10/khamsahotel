@@ -34,7 +34,8 @@ const HeroSection = () => {
           rooms: "Xonalar",
           guests: "Mehmonlar",
           searchButton: "Xonalarni Qidirish",
-          availabilityText: "Mavjud xonalarni tekshiring"
+          availabilityText: "Mavjud xonalarni tekshiring",
+          chooseButton: "Joy Tanlang"
         };
       case 'ru':
         return {
@@ -45,7 +46,8 @@ const HeroSection = () => {
           rooms: "Номера",
           guests: "Гости",
           searchButton: "Найти номера",
-          availabilityText: "Проверьте доступные номера"
+          availabilityText: "Проверьте доступные номера",
+          chooseButton: "Выберите местоположение"
         };
       default:
         return {
@@ -56,25 +58,26 @@ const HeroSection = () => {
           rooms: "Rooms",
           guests: "Guests",
           searchButton: "Search Rooms",
-          availabilityText: "Check available rooms"
+          availabilityText: "Check available rooms",
+          chooseButton: "Choose Place"
         };
     }
   };
 
   const handleBookingSearch = () => {
     if (!checkInDate || !checkOutDate) {
-      alert(currentLanguage === 'uz' ? 'Iltimos, sanalarni tanlang' : 
-            currentLanguage === 'ru'? 'Пожалуйста, выберите даты' : 'Please select dates');
+      alert(currentLanguage === 'uz' ? 'Iltimos, sanalarni tanlang' :
+        currentLanguage === 'ru' ? 'Пожалуйста, выберите даты' : 'Please select dates');
       return;
     }
-    
+
     const searchParams = {
       checkIn: checkInDate,
       checkOut: checkOutDate,
       rooms: roomQuantity,
       guests: guestQuantity
     };
-    
+
     localStorage.setItem('bookingSearch', JSON.stringify(searchParams));
     window.dispatchEvent(new CustomEvent('openBookingModal', { detail: searchParams }));
   };
@@ -104,7 +107,7 @@ const HeroSection = () => {
             <p className="text-xl sm:text-2xl text-white/90 mb-8 leading-relaxed">
               {content.subtitle}
             </p>
-            
+
             {/* Mobile Booking Form */}
             <div className="lg:hidden bg-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-2xl">
               <div className="flex items-center justify-center mb-4">
@@ -113,7 +116,7 @@ const HeroSection = () => {
                   {content.availabilityText}
                 </h3>
               </div>
-              
+
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
                   <label className="block text-sm font-medium text-text-secondary mb-2">
@@ -140,7 +143,7 @@ const HeroSection = () => {
                   />
                 </div>
               </div>
-              
+
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div>
                   <label className="block text-sm font-medium text-text-secondary mb-2">
@@ -170,8 +173,12 @@ const HeroSection = () => {
                     ))}
                   </select>
                 </div>
+                <div>
+                  <label className="block text-sm font-medium text-text-secondary mb-2">
+                    {content.chooseButton}
+                  </label>
+                </div>
               </div>
-              
               <Button
                 variant="primary"
                 onClick={handleBookingSearch}
@@ -194,7 +201,7 @@ const HeroSection = () => {
                   {content.availabilityText}
                 </h3>
               </div>
-              
+
               <div className="grid grid-cols-2 gap-6 mb-6">
                 <div>
                   <label className="block text-sm font-medium text-text-secondary mb-3">
@@ -221,7 +228,7 @@ const HeroSection = () => {
                   />
                 </div>
               </div>
-              
+
               <div className="grid grid-cols-2 gap-6 mb-8">
                 <div>
                   <label className="block text-sm font-medium text-text-secondary mb-3">
@@ -252,7 +259,19 @@ const HeroSection = () => {
                   </select>
                 </div>
               </div>
-              
+
+              <div>
+                <label className="block text-sm font-medium text-text-secondary mb-3">
+                  {content.chooseButton}
+                </label>
+                <select
+                  className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-surface text-text-primary mb-10"
+                >
+                  <option value="Khamsa">Tashkent Khamsa Hotel</option>
+                  <option value="airport">Tashkent Airport Khamsa Hotel</option>
+                </select>
+              </div>
+
               <Button
                 variant="primary"
                 onClick={handleBookingSearch}
