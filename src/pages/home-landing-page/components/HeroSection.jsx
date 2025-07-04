@@ -267,7 +267,7 @@ const HeroSection = () => {
                 <select
                   className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-surface text-text-primary mb-10"
                 >
-                  <option value="Khamsa">Tashkent Khamsa Hotel</option>
+                  <option value="Khamsa">Tashkent Khamsa Hotell</option>
                   <option value="airport">Tashkent Airport Khamsa Hotel</option>
                 </select>
               </div>
